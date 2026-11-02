@@ -673,7 +673,9 @@ td.actions > *, td.actions form { display: inline-flex; vertical-align: middle; 
     background: var(--sage-soft);
     color: var(--green);
     font-size: 1.15rem;
+    overflow: hidden;
 }
+.prod-cell .mini img { width: 100%; height: 100%; object-fit: cover; }
 
 /* Cart on phones and small tablets: each row becomes a small card instead of a wide table */
 @media (max-width: 767px) {

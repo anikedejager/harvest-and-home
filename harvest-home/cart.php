@@ -72,7 +72,7 @@ require 'includes/header.php';
             <tbody>
             <?php foreach ($cart['items'] as $item): $p = $item['product']; $id = (int)$p['product_id']; ?>
                 <tr>
-                    <td><a class="prod-cell" href="product.php?id=<?= $id ?>"><span class="mini"><?= icon(category_icon($p['category_name'])) ?></span><?= h($p['product_name']) ?></a></td>
+                    <td><a class="prod-cell" href="product.php?id=<?= $id ?>"><span class="mini"><?= $p['product_image'] ? '<img src="' . h($p['product_image']) . '" alt="">' : icon(category_icon($p['category_name'])) ?></span><?= h($p['product_name']) ?></a></td>
                     <td data-label="Price"><?= on_special($p) ? '<span class="was">' . money($p['price']) . '</span><br>' : '' ?><?= money($item['price']) ?></td>
                     <td>
                         <form class="qty-form qty" method="post" action="cart.php">
