@@ -12,6 +12,9 @@ define('DB_PASS', getenv('HH_DB_PASS') !== false ? getenv('HH_DB_PASS') : '');
 // Flat delivery fee for the Western Cape (Rands)
 define('DELIVERY_FEE', 50.00);
 
+// South African local time, used by PHP and by the database session
+date_default_timezone_set('Africa/Johannesburg');
+
 function db(): PDO
 {
     static $pdo = null;
@@ -23,6 +26,7 @@ function db(): PDO
                 PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
                 PDO::ATTR_EMULATE_PREPARES   => false,
             ]);
+            $pdo->exec("SET time_zone = '+02:00'");
         } catch (PDOException $e) {
             error_log('DB connection failed: ' . $e->getMessage());
             http_response_code(500);
